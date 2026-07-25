@@ -1,8 +1,15 @@
 import 'dotenv/config'
 
 import express from 'express'
+import cors from 'cors'
 
 const app = express()
+
+// Allow requests from frontend (both local development and production Vercel)
+app.use(cors({
+  origin: ['http://localhost:5173', 'https://react-node-hazel.vercel.app'],
+  credentials: true
+}))
 
 const port = process.env.PORT || 3000;
 
@@ -47,3 +54,5 @@ app.get('/api/menu', (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
 });
+
+export default app;

@@ -9,16 +9,16 @@ function App() {
   const [menu, setMenu] = useState([])
 
   useEffect(() => {
-    axios.get('api/menu')
-    .then((response) => {
-      setMenu(response.data)
-    }
-  )
-    .catch((error) => {
-      console.log(error)
-    }
-  )
-  })
+    const API_URL = import.meta.env.VITE_API_URL || '';
+    axios.get(`${API_URL}/api/menu`)
+      .then((response) => {
+        setMenu(response.data)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }, [])
+
 
   return (
     <>
