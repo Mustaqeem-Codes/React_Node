@@ -43,7 +43,18 @@ function App() {
         <h1>Hello world</h1>
         <button
           onClick={fetchNewJoke}
-          className="bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-5 py-2.5 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg active:scale-95 cursor-pointer"
+          style={{
+            backgroundColor: "#4f46e5",
+            color: "#ffffff",
+            padding: "10px 20px",
+            borderRadius: "8px",
+            border: "none",
+            fontSize: "15px",
+            fontWeight: "500",
+            cursor: "pointer",
+            boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+            transition: "background-color 0.2s ease",
+          }}
         >
           Tell me a joke!
         </button>
