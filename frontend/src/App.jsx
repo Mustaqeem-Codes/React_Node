@@ -7,6 +7,23 @@ import axios from 'axios'
 
 function App() {
   const [menu, setMenu] = useState([])
+  const [joke, setJoke] = useState('')
+
+
+  // This function only runs when the button is clicked
+  const fetchNewJoke = () => {
+    const API_URL = import.meta.env.VITE_API_URL || '';
+    
+    // Notice it goes to /api/joke now!
+    axios.get(`${API_URL}/api/joke`)
+      .then((response) => {
+        // We grab just the text from the object we sent from the backend
+        setJoke(response.data.joke) 
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
 
   useEffect(() => {
     const API_URL = import.meta.env.VITE_API_URL || '';
@@ -24,6 +41,9 @@ function App() {
     <>
       <section id="center">
         <h1>Hello world</h1>
+        <button onClick={fetchNewJoke}>Tell me a joke!</button>
+        <p style={{ fontStyle: 'italic' }}>{joke}</p>
+        <hr />
         <p>Menu : {menu.length}</p>
         {
           menu.map((menu, index) =>(

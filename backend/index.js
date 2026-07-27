@@ -51,8 +51,24 @@ app.get('/api/menu', (req, res) => {
   res.json(menuItems);
 });
 
+app.get('/api/joke', (req, res) => {
+  const jokes = [
+    "Why do programmers prefer dark mode? Because light attracts bugs.",
+    "How many programmers does it take to change a light bulb? None, that's a hardware problem.",
+    "I would love to change the world, but they won't give me the source code.",
+    "There are 10 types of people in the world: those who understand binary, and those who don't."
+  ];
+
+  // This math picks one random joke from the array above
+  const randomIndex = Math.floor(Math.random() * jokes.length);
+  const selectedJoke = jokes[randomIndex];
+
+  // Send back an object containing that single joke
+  res.json({ joke: selectedJoke });
+});
+
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
 });
 
-export default app;
+export default app;
